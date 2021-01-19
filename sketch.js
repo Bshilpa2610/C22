@@ -34,7 +34,9 @@ function setup() {
 
 	starBody = Bodies.circle(650 , 30 , 5 , {restitution:0.5, isStatic:true});
 	World.add(world, starBody);
+
 	
+
 	Engine.run(engine);
 
 }
@@ -42,7 +44,12 @@ function setup() {
 
 function draw() {
   background(bgImg);
-
+  star.x=starBody.position.x;
+  star.y=starBody.position.y;
+if (starBody.position.y>470) {
+	starBody.isStatic=true;
+}
+	
   drawSprites();
 
 }
@@ -59,8 +66,9 @@ function keyPressed() {
 	}
 	if(keyCode === DOWN_ARROW)
 	{
-		star.x=starBody.position.x;
-		star.y=starBody.position.y;
-	}
-	//write code here
+		Body.setStatic(starBody,false);
+		//Matter.Body.setStatic(starBody,false);
+				
+		}
+	
 }
